@@ -1,0 +1,110 @@
+{
+  "name": "flutter-power-pack",
+  "displayName": "Flutter Power Pack",
+  "description": "A curated, production-focused VS Code extension pack for Flutter and Dart development, testing, APIs, architecture, and team productivity.",
+  "version": "1.0.0",
+  "publisher": "alqudimi",
+  "author": {
+    "name": "Abdulaziz Alqudimi",
+    "email": "abodx1234freey@gmail.com",
+    "url": "https://github.com/Alqudimi"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "scripts": {
+    "validate:manifest": "node scripts/validate-manifest.mjs",
+    "package:vsix": "npx --yes @vscode/vsce@3.9.2 package --no-dependencies"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Extension Packs"
+  ],
+  "extensionKind": [
+    "workspace"
+  ],
+  "keywords": [
+    "flutter",
+    "dart",
+    "mobile",
+    "cross-platform",
+    "development",
+    "productivity",
+    "extension-pack"
+  ],
+  "galleryBanner": {
+    "color": "#02569B",
+    "theme": "dark"
+  },
+  "badges": [
+    {
+      "url": "https://img.shields.io/github/license/Alqudimi/flutter-power-pack?style=flat",
+      "href": "https://github.com/Alqudimi/flutter-power-pack/blob/main/LICENSE",
+      "description": "MIT License"
+    },
+    {
+      "url": "https://img.shields.io/github/actions/workflow/status/Alqudimi/flutter-power-pack/publish.yml?branch=main&style=flat",
+      "href": "https://github.com/Alqudimi/flutter-power-pack/actions/workflows/publish.yml",
+      "description": "Publish workflow"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alqudimi/flutter-power-pack.git"
+  },
+  "homepage": "https://github.com/Alqudimi/flutter-power-pack#readme",
+  "bugs": {
+    "url": "https://github.com/Alqudimi/flutter-power-pack/issues"
+  },
+  "qna": "https://github.com/Alqudimi/flutter-power-pack/discussions",
+  "markdown": "github",
+  "extensionPack": [
+    "Dart-Code.flutter",
+    "Dart-Code.dart-code",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+    "shardulm94.trailing-spaces",
+    "DavidAnson.vscode-markdownlint",
+    "hzgood.dart-data-class-generator",
+    "hirantha.json-to-dart",
+    "Nash.awesome-flutter-snippets",
+    "alexisvt.flutter-snippets",
+    "marcelovelasquez.flutter-tree",
+    "miquelddg.dart-barrel-file-generator",
+    "nivisi.dart-build-runner-tools",
+    "Kaiqun.build-runner",
+    "FelixAngelov.bloc",
+    "robert-brunhage.flutter-riverpod-snippets",
+    "gornivv.vscode-flutter-files",
+    "naumovs.color-highlight",
+    "circlecodesolution.ccs-flutter-color",
+    "kisstkondoros.vscode-gutter-preview",
+    "jock.svg",
+    "HoussemEddineFadhli.flutter-best-theme",
+    "jeroen-meijer.pubspec-assist",
+    "everettjf.pubspec-dependency-search",
+    "pflannery.vscode-versionlens",
+    "ryanluker.vscode-coverage-gutters",
+    "Flutterando.flutter-coverage",
+    "gmlewis-vscode.flutter-stylizer",
+    "aaron-bond.better-comments",
+    "gruntfuggly.todo-tree",
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "GitHub.vscode-pull-request-github",
+    "rangav.vscode-thunder-client",
+    "humao.rest-client",
+    "volankey.flutter-i18n-vscode-inline",
+    "esskar.vscode-flutter-i18n-json",
+    "l10n-dev.translate-i18n-json",
+    "Sunnat.clean-arch-ddd-flutter",
+    "GitHub.copilot-chat",
+    "RooVeterinaryInc.roo-cline",
+    "dkundel.vscode-new-file",
+    "wmaurer.change-case",
+    "johnpapa.vscode-peacock",
+    "PKief.material-icon-theme",
+    "a11yChecker.a11y-checker"
+  ]
+}

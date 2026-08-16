@@ -1,0 +1,61 @@
+name: Validate, package, and release Flutter Power Pack
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate-and-package:
+    name: Validate and package VS Code extension
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install VS Code Extension CLI
+        run: npm install --global @vscode/vsce@3
+
+      - name: Validate manifest JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('package.json', 'utf8')); console.log('package.json is valid JSON')"
+
+      - name: Package extension
+        run: vsce package --no-dependencies --out "flutter-power-pack-${GITHUB_REF_NAME#v}.vsix"
+
+      - name: Upload VSIX artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: flutter-power-pack-vsix
+          path: '*.vsix'
+          if-no-files-found: error
+
+      - name: Create GitHub release for version tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" ./*.vsix --verify-tag --title "$GITHUB_REF_NAME" --generate-notes
+
+      - name: Publish to Visual Studio Marketplace when authorized
+        if: startsWith(github.ref, 'refs/tags/v') && secrets.VSCE_PAT != ''
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: vsce publish --packagePath ./*.vsix --pat "$VSCE_PAT"
+
+      - name: Publish to Open VSX when authorized
+        if: startsWith(github.ref, 'refs/tags/v') && secrets.OVSX_TOKEN != ''
+        env:
+          OVSX_TOKEN: ${{ secrets.OVSX_TOKEN }}
+        run: |
+          npm install --global ovsx
+          ovsx publish ./*.vsix --pat "$OVSX_TOKEN"

@@ -1,0 +1,10 @@
+# Default owner for all repository changes.
+* @Alqudimi
+
+# Require the maintainer's review for packaging, publication, and manifest changes.
+/package.json @Alqudimi
+/package-lock.json @Alqudimi
+/.github/ @Alqudimi
+/.vscodeignore @Alqudimi
+/PUBLISH_GUIDE.md @Alqudimi
+/SECURITY.md @Alqudimi
