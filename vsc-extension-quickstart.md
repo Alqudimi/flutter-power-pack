@@ -4,36 +4,39 @@ Flutter Power Pack is a manifest-only VS Code extension pack. There is no runtim
 
 ## Requirements
 
-Use Node.js 20 or later, npm, Git, and the VS Code Extension CLI.
-
-```bash
-npm install --global @vscode/vsce@3
-```
+Use Node.js 20 or later, npm, Git, and VS Code. The repository pins the packaging CLI through the `package:vsix` npm script, so a global `vsce` installation is optional.
 
 ## Inspect and validate
 
 From the repository root:
 
 ```bash
-node -e "JSON.parse(require('fs').readFileSync('package.json', 'utf8')); console.log('valid JSON')"
-vsce ls
-vsce package --no-dependencies
+npm ci --ignore-scripts --no-audit --no-fund
+npm run validate:manifest
+npm run package:vsix -- --out flutter-power-pack-1.0.0.vsix
 ```
 
-The first command validates the manifest. `vsce ls` previews the files included in the package. `vsce package --no-dependencies` creates a local VSIX without trying to resolve runtime dependencies.
+The validator checks required metadata, duplicate IDs, semantic versioning, and the availability of all pack IDs in the public Marketplace gallery. This is an upstream dependency check, not a publication step. The package command creates a local VSIX without runtime dependencies.
 
-## Cross-reference check
+## Package inspection
 
-The source validation report is maintained outside the distributable project during development. Before a release, verify that every ID in `package.json` has a corresponding catalog row in `README.md`, that no ID is duplicated, that `icon.png` is at least 128 by 128 pixels, and that the GitHub workflow is valid YAML.
+Preview the files included in the package with:
+
+```bash
+npx --yes @vscode/vsce@3.9.2 ls
+unzip -t flutter-power-pack-1.0.0.vsix
+```
+
+Confirm that secrets, `.git`, `.github`, `.vscode`, `src`, `scripts`, `node_modules`, and generated archives are not included.
 
 ## Local installation
 
 Install the generated package with:
 
 ```bash
-code --install-extension flutter-power-pack-1.0.0.vsix
+code --install-extension flutter-power-pack-1.0.0.vsix --force
 ```
 
 ## Release
 
-Update `package.json` and `CHANGELOG.md`, commit the change, create a `vX.Y.Z` tag, and push the tag. The GitHub Actions workflow publishes tagged releases when `VSCE_PAT` is configured.
+Update `package.json`, `package-lock.json`, `CHANGELOG.md`, and `VALIDATION_REPORT.md`; commit the change; create a matching `vX.Y.Z` tag; and push the tag. GitHub Actions creates a GitHub Release with the VSIX asset. Visual Studio Marketplace and Open VSX publication are intentionally disabled for this project.

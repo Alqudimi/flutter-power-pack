@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Comprehensive catalog documenting all 50 requested IDs and their validation status.
 - Flutter-inspired SVG and 256 by 256 PNG branding assets.
 - GitHub issue templates, contribution guidance, Code of Conduct, and pull request template.
-- GitHub Actions workflow for tagged Marketplace publication.
+- GitHub Actions workflow for tagged GitHub Release publication with an attached VSIX.
 - Publishing guide, design decisions, recommended settings, shortcuts, and troubleshooting documentation.
 
 ### Changed

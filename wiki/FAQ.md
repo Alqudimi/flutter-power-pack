@@ -24,6 +24,6 @@ Yes. Build or download the `.vsix` file and install it through **Install from VS
 
 The manifest preserves the publisher-provided spelling. The validation script normalizes case because the public Marketplace API may return publisher names with different capitalization even when the identifier resolves to the same listing.
 
-## Which stores are officially supported?
+## Which distribution channels are officially supported?
 
-The project supports distribution through GitHub Releases and can publish to the Visual Studio Marketplace and Open VSX when the publisher has completed the provider's account, agreement, namespace, and credential requirements. A third-party site that merely mirrors VSIX downloads is not treated as an official author publication channel.
+The project officially distributes through the public GitHub repository, GitHub Releases, and local VSIX installation. The Visual Studio Marketplace and Open VSX are intentionally not used as publication channels for this project. A third-party site that merely mirrors VSIX downloads is not treated as an official author-controlled channel.

@@ -14,16 +14,16 @@ Verify the Flutter SDK, Dart SDK, and official `Dart-Code.flutter` and `Dart-Cod
 
 ## A service extension asks for an account
 
-Extensions such as AI assistants, API clients, or collaboration tools may require separate accounts, subscriptions, or provider terms. The pack does not grant access to those services. Follow the provider's own sign-in and licensing instructions.
+Extensions such as AI assistants, API clients, or collaboration tools may require separate accounts, subscriptions, or provider-specific licenses. The pack does not grant access to those services. Follow the provider's own sign-in and licensing instructions.
 
-## The Marketplace package cannot be published
+## GitHub Release packaging fails
 
-Check that the `publisher` value belongs to the authenticated publisher account, the version is not already published, the icon and README satisfy Marketplace rules, and the token or identity has the required permission. Do not copy credentials into issue reports or workflow files.
+Run `npm ci --ignore-scripts --no-audit --no-fund`, then `npm run validate:manifest` and `npm run package:vsix -- --out flutter-power-pack-1.0.0.vsix` locally. Check the workflow log for the first failing command and confirm that the version tag matches the manifest version.
 
-## Open VSX publication fails
+## The release asset cannot be installed
 
-Confirm that the Eclipse publisher agreement is accepted, the `alqudimi` namespace exists, the access token is valid, and the VSIX was packaged successfully. Review registry scanning messages for secret detection, blocked files, or namespace similarity issues.
+Download the VSIX again from the official [GitHub Release](https://github.com/Alqudimi/flutter-power-pack/releases), verify its checksum when provided, and install it with `code --install-extension ... --force`. Do not use an unverified third-party mirror.
 
-## CI does not publish to a registry
+## Why is a Marketplace reference present in the project?
 
-This is expected when `VSCE_PAT` and/or `OVSX_TOKEN` is absent. The workflow still validates, packages, uploads an artifact, and creates a GitHub Release for version tags. Add only the required secret to the repository settings and rerun the tag workflow after reviewing the permissions.
+The pack contains IDs for upstream extensions that are discoverable through the public Marketplace. The validator checks that those upstream dependencies still exist. This is not a publication or upload of Flutter Power Pack to the Marketplace. The project itself is distributed through GitHub Releases and local VSIX files only.

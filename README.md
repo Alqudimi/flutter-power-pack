@@ -228,7 +228,7 @@ Please read `CONTRIBUTING.md`, follow the Code of Conduct, and keep changes focu
 
 ## Release and changelog
 
-Release notes follow the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format and use Semantic Versioning. Read `CHANGELOG.md` for the current release. The GitHub Actions workflow in `.github/workflows/publish.yml` validates and packages every run, creates a GitHub Release for version tags, and publishes to the Visual Studio Marketplace or Open VSX only when the corresponding authorized secret (`VSCE_PAT` or `OVSX_TOKEN`) is configured. See `PUBLISH_GUIDE.md` for the complete procedure.
+Release notes follow the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format and use Semantic Versioning. Read `CHANGELOG.md` for the current release. The GitHub Actions workflow in `.github/workflows/publish.yml` validates and packages every run and creates a GitHub Release with the VSIX for version tags. GitHub Releases and local VSIX installation are the official distribution channels for this project. See `PUBLISH_GUIDE.md` for the complete procedure.
 
 ## Author and support
 

@@ -37,10 +37,7 @@ flowchart LR
     B --> C[GitHub Actions validates manifest]
     C --> D[vsce packages VSIX]
     D --> E[Artifact and GitHub Release]
-    E --> F{Credential configured?}
-    F -->|VSCE_PAT| G[Visual Studio Marketplace]
-    F -->|OVSX_TOKEN| H[Open VSX]
-    F -->|Neither| I[Release remains available on GitHub]
+    E --> F[Users download VSIX or install locally]
 ```
 
 ## Failure boundaries
